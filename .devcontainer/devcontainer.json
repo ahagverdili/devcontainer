@@ -1,0 +1,52 @@
+{
+	"name": "{PROJECT_NAME}",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	// Stuff below allows us to run GUI applications in the container.
+	"runArgs": [
+		"--device=/dev/dri:/dev/dri"
+	],
+	"remoteUser": "vscode",
+	"mounts": [
+		{
+			"source": "${localEnv:XDG_RUNTIME_DIR}/wayland-0",
+			"target": "/tmp/wayland-host/wayland-0",
+			"type": "bind"
+		}
+	],
+	"containerEnv": {
+		"WAYLAND_DISPLAY": "wayland-0",
+		"XDG_RUNTIME_DIR": "/tmp/wayland-host",
+		"QT_QPA_PLATFORM": "wayland"
+	},
+	// VSCode extensions and customizations.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"llvm-vs-code-extensions.vscode-clangd",
+				"ms-vscode.cpptools",
+				"streetsidesoftware.code-spell-checker",
+				"theqtcompany.qt-core",
+				"theqtcompany.qt-qml",
+				"TheQtCompany.qt-cpp",
+				"TheQtCompany.qt-ui",
+				"twxs.cmake",
+				"ms-python.vscode-pylance",
+				"ms-python.python",
+				"ms-python.debugpy"
+			],
+			"settings": {
+				// Disable Microsoft's IntelliSense engine to avoid conflicts with clangd
+				"C_Cpp.intelliSenseEngine": "disabled",
+				// Use fish as the default terminal
+				"terminal.integrated.defaultProfile.linux": "fish",
+				"terminal.integrated.profiles.linux": {
+					"fish": {
+						"path": "/usr/bin/fish"
+					}
+				}
+			}
+		}
+	}
+}

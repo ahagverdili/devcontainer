@@ -1,2 +1,2 @@
 # devcontainer
-A reusable devcontainer config
+A reusable devcontainer config, mainly used in VSCode.
