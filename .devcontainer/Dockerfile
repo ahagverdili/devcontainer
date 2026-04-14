@@ -22,6 +22,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
         libxcb-cursor0 \
         libxcb-xfixes0-dev \
         libqt6quickcontrols2-6 \
+        ca-certificates \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
