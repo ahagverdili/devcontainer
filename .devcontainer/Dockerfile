@@ -23,6 +23,8 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
         libxcb-xfixes0-dev \
         libqt6quickcontrols2-6 \
         ca-certificates \
+        python3-venv \
+        gdb \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
